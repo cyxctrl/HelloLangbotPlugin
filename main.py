@@ -37,7 +37,7 @@ class MyPlugin(BasePlugin):
 
             # 输出调试信息
             self.ap.logger.debug("hello, {}".format(ctx.event.sender_id))
-            self.ap.logger.debug("get_variables, {}".format(ctx.event.query.get_variables()))
+            self.ap.logger.info("get_variables, {}".format(ctx.event.query.get_variables()))
 
             # 回复消息 "hello, everyone!"
             ctx.add_return("reply", ["hello, everyone!"])
