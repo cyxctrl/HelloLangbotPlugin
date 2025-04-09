@@ -36,15 +36,17 @@ class MyPlugin(BasePlugin):
         if msg == "hello":  # 如果消息为hello
 
             # 输出调试信息
-            self.ap.logger.info("hello, {}".format(ctx.event.sender_id))
             self.ap.logger.info("get_variables, {}".format(ctx.event.query.get_variables()))
-            self.ap.logger.info("event, {}".format(ctx.event))
 
             # 回复消息 "hello, everyone!"
             ctx.add_return("reply", ["hello, everyone!"])
 
             # 阻止该事件默认行为（向接口获取回复）
             ctx.prevent_default()
+        if msg == '考勤统计':
+            self.ap.logger.info("1 get_variables, {}".format(ctx.event.query.get_variables()))
+            ctx.event.query.set_variable("sender_id", "my_open_id")
+            self.ap.logger.info("2 get_variables, {}".format(ctx.event.query.get_variables()))
 
     # 插件卸载时触发
     def __del__(self):
