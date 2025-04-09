@@ -43,8 +43,7 @@ class MyPlugin(BasePlugin):
 
             # 阻止该事件默认行为（向接口获取回复）
             ctx.prevent_default()
-        if msg == '考勤统计':
-            ctx.event.query.set_variable("sender_id", ctx.event.sender_id)
+        ctx.event.query.set_variable("lark_open_id", ctx.event.sender_id)
 
     # 插件卸载时触发
     def __del__(self):
