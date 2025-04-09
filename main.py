@@ -36,8 +36,9 @@ class MyPlugin(BasePlugin):
         if msg == "hello":  # 如果消息为hello
 
             # 输出调试信息
-            self.ap.logger.debug("hello, {}".format(ctx.event.sender_id))
+            self.ap.logger.info("hello, {}".format(ctx.event.sender_id))
             self.ap.logger.info("get_variables, {}".format(ctx.event.query.get_variables()))
+            self.ap.logger.info("event, {}".format(ctx.event))
 
             # 回复消息 "hello, everyone!"
             ctx.add_return("reply", ["hello, everyone!"])
